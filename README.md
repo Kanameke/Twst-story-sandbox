@@ -1,120 +1,180 @@
 <h1 align="center">Twisted Wonderland Dialogue Sandbox</h1>
 
 <p align="center">
-  Play with Twisted Wonderland-style dialogue scenes, play them in a fullscreen simulator, and save any line as a PNG.
+  A little sandbox for building Twisted Wonderland-style dialogue boxes.<br>
+  Pick a background, place sprites, type a line, and save it as a PNG. English and 日本語.
 </p>
 
 <p align="center">
-  <img alt="HTML" src="https://img.shields.io/badge/HTML-CSS-JS-c9a85a?style=flat-square">
+  <img alt="HTML CSS JS" src="https://img.shields.io/badge/HTML%20%C2%B7%20CSS%20%C2%B7%20JS-c9a85a?style=flat-square">
   <img alt="No build step" src="https://img.shields.io/badge/build-none-2ea043?style=flat-square">
   <img alt="License" src="https://img.shields.io/badge/license-MIT-blue?style=flat-square">
   <img alt="Fan project" src="https://img.shields.io/badge/fan-project-e0457b?style=flat-square">
 </p>
 
 <p align="center">
-  <img src="public/screenshots/maker.jpg" alt="Story Maker editor" width="900">
+  <img src="public/screenshots/desktop.jpg" alt="Dialogue Sandbox on desktop" width="900">
 </p>
 
 ## Features
 
-- **Scene editor**: speaker name, dialogue text, background, and three sprite slots (left, center, right) per line.
-- **Sprite controls**: flip, horizontal offset, global size and height, and a "speaking" highlight that dims the other sprites.
-- **Game-style dialogue UI**: box, name tag, and back button from the in-game layout. Text auto-shrinks if it would overflow the box.
-- **Simulator**: title screen, typewriter text, fullscreen play, keyboard controls.
-- **Save PNG**: export the current line at 2560x1280.
-- **Import / Export**: save stories as `.json`, or export a `story.js` for the simulator.
-- **Uploads**: add your own backgrounds and sprites from the editor.
-- **No build step**: plain HTML, CSS and JavaScript.
+- **One scene, live preview.** A big framed canvas with the dialogue box, name tag and your sprites. Everything you change updates instantly.
+- **Three tabs** (the buttons beside the canvas):
+  - **Background**: preview, upload, and a gallery picker.
+  - **Text**: dialogue text, font size, name tag, hide switches and a font offset.
+  - **Sprites**: layers (add, delete, reorder), a sprite picker, X / Y offset, scale, hide and flip.
+- **English and 日本語.** Switch the language at the top-left. The whole interface is translated, the dialogue uses the Japanese dialogue font, and the character list shows Japanese names.
+- **Character list** grouped by dorm, including Royal Sword Academy (Rielle, Minajael, Chenya, Neige and more). Add your own names under **My characters**.
+- **Sprite and background folders.** Drop images into `public/sprites/<character>/` or `public/backgrounds/` and they show up in the pickers.
+- **Add entries from the page** with **+ Add entry** (name it and it is remembered in your browser).
+- **Save** exports a 2560 x 1280 PNG that matches the preview. **Clear** empties the scene.
+- Works on phones: the canvas stays pinned at the top while you scroll the panel.
+- No build step, no dependencies. Plain HTML, CSS and JavaScript.
 
 ## Screenshots
 
-| Simulator title | Simulator play | Saved PNG |
+| Text tab | Sprites tab | Japanese |
 |---|---|---|
-| <img src="public/screenshots/simulator_title.jpg" width="300"> | <img src="public/screenshots/simulator_play.jpg" width="300"> | <img src="public/screenshots/saved_line3.jpg" width="300"> |
+| <img src="public/screenshots/text-tab.jpg" width="300"> | <img src="public/screenshots/sprites-tab.jpg" width="300"> | <img src="public/screenshots/japanese.jpg" width="300"> |
+
+| Saved PNG | Mobile | Background gallery |
+|---|---|---|
+| <img src="public/screenshots/saved-png.jpg" width="300"> | <img src="public/screenshots/mobile.jpg" width="150"> | <img src="public/screenshots/background-gallery.jpg" width="150"> |
+
+| Character picker | Sprite picker |
+|---|---|
+| <img src="public/screenshots/character-picker.jpg" width="150"> | <img src="public/screenshots/sprite-picker.jpg" width="150"> |
 
 ## Getting started
 
-```bash
-git clone https://github.com/<your-name>/twst-story-maker.git
-cd twst-story-maker
-```
-
-**Quick:** double-click `index.html` (editor) or `simulator.html` (player).
-
-**With a local server** (needed for Save PNG unless you add the offline patch):
+You need Python 3 (already on most computers). Run one of these from the project folder:
 
 ```bash
-npm start            # or: python3 -m http.server 8080
-# Windows: start.bat   Mac/Linux: ./start.sh
+./start.sh        # Mac / Linux
+start.bat         # Windows (double-click)
+# or by hand:
+python3 tools/make-manifest.py
+python3 -m http.server 8080
 ```
 
 Then open <http://localhost:8080>.
 
-> **Save PNG on `file://`**: browsers block image export when a page is opened by double-clicking it.
-> Unzip `save-png-offline-patch.zip` into the project folder (adds `src/assets-data.js`) or use a local server.
+> **Why not just double-click `index.html`?** Browsers block saving images from pages opened as files, so **Save** would fail.
+> Run it through the local server above (the start scripts do this for you).
 
-## Controls
+The start scripts also rebuild the sprite and background list every time, so new files appear automatically.
 
-| Key | Action |
+## Using the sandbox
+
+| Where | What it does |
 |---|---|
-| Click / Space / Enter | Next line (finishes typing first) |
-| Left arrow | Previous line |
-| P | Save PNG of the current line |
-| Esc | Exit play mode |
+| Top-left dropdown | Language: English / 日本語 |
+| Right of the canvas | Tabs: Background, Text, Sprites |
+| **Save** | Download the scene as a PNG |
+| **Clear** | Empty the text, name and sprites |
+| **>** (bottom, beside the panel) | Hide or show the side panel for a bigger canvas |
+| Pencil icon next to a slider | Type an exact value |
+| Reset icon next to a slider | Back to the default |
+
+Your last scene is remembered in your browser, so a refresh will not lose it.
+
+## Adding sprites (a folder per character)
+
+Every character has a folder:
+
+```
+public/sprites/
+├── epel/        # Epel's sprites (included)
+├── rielle/
+├── minajael/
+├── deuce/
+└── ...          # one folder for every character in the list
+```
+
+1. Put that character's sprites in their folder (PNG / WebP / JPG, transparent, all the same canvas size so they line up).
+2. Update the list (see [Updating the list](#updating-the-list)).
+3. Open the **Sprites** tab, tap the sprite field, and pick from the list under the character's name.
+
+File names become the labels: `arms_back_smile.png` shows as "Arms back smile".
+A character that is not listed? Make a new folder with their name inside `public/sprites/`.
+
+Only Epel's sprites are included. No other official character art is bundled, so add your own.
+
+## Adding backgrounds
+
+Put images (JPG / PNG / WebP, 16:9 or 2:1 works best) in `public/backgrounds/`. Sub-folders are fine; the folder name shows in the label.
+Then [update the list](#updating-the-list). They appear in the **Background** gallery.
+
+## Updating the list
+
+The page reads `src/sprites-manifest.js`, which lists every file in the sprite and background folders.
+A website cannot scan folders by itself, so this file must be regenerated whenever you add or remove files:
+
+| How you run it | What to do |
+|---|---|
+| On your computer | Run `start.bat` / `start.sh` (or `python3 tools/make-manifest.py`). |
+| Hosted from GitHub | Push your new files. `.github/workflows/update-manifest.yml` rebuilds the list and commits it for you. |
+| Uploading files by hand to a host | Run `tools/make-manifest.py` first, then upload the new `src/sprites-manifest.js` along with your images. |
+
+**Nothing shows up in the pickers?** Open `your-site/src/sprites-manifest.js` in the browser.
+A 404 means the file was not uploaded. `[]` means it was generated before you added the files.
+The pickers also show a short hint when the list is empty.
+
+## Add entries from the page (no files needed)
+
+Every picker has **+ Add entry**. Choose an image, give it a name, and it appears in the list.
+Character pickers have **+ Add name** for your own characters (shown under **My characters**).
+These are saved in your browser, so they only exist on that browser and device. Browsers allow only a few MB, so many large images may not all be remembered (the page warns you).
+Entries you added have a ✕ button to remove them.
+
+## Fonts
+
+| Used for | File |
+|---|---|
+| Name tag (and headings) | `public/fonts/Boucherie-Flared.ttf` |
+| Dialogue text, English | `public/fonts/FOT-TsukuARdGothic-Std-B-interface.ttf` |
+| Dialogue text, Japanese | `public/fonts/FOT-TsukuARdGothic-Std-R-Japanese-dialogue.ttf` |
+| Interface text | `public/fonts/FOT-TsukuARdGothic-Std-R.ttf` |
+
+The FOT fonts are commercial fonts. Make sure you have the right to use them and to redistribute them before you publish the project.
+The font files are large (about 50 MB together), so the first load can be slow on a phone.
 
 ## Project structure
 
 ```
 .
-├── index.html                      # editor
-├── simulator.html                  # fullscreen player (reads src/story.js)
-├── localization-template-en.json   # UI strings template
-├── package.json
-├── start.bat / start.sh            # tiny local server launchers
+├── index.html
+├── start.bat / start.sh            # build the list, start a local server
+├── tools/make-manifest.py          # scans the sprite and background folders
+├── .github/workflows/              # optional: auto-update the list on push
 ├── public/
-│   ├── backgrounds/                # background images
-│   ├── sprites/                    # transparent PNG sprites (same canvas size)
-│   ├── ui/                         # dialogue_ui.png (box + name tag + back button)
-│   ├── fonts/                      # name font + dialogue font
+│   ├── backgrounds/                # your backgrounds
+│   ├── sprites/<character>/        # your sprites, one folder per character
+│   ├── ui/                         # dialogue box art, Epel icon
+│   ├── fonts/
 │   └── screenshots/                # images used in this README
 └── src/
-    ├── app.js                      # editor, player, Save PNG
+    ├── app.js                      # all the logic: pickers, languages, Save PNG
     ├── styles.css
-    ├── assets.js                   # list of backgrounds, sprites, character names
-    ├── lang.js                     # UI strings (en)
-    └── story.js                    # story used by the simulator
+    ├── assets.js                   # character names (add more here)
+    └── sprites-manifest.js         # generated list of sprites and backgrounds
 ```
 
-## Adding your own assets
+Want a new character name in the list? Add it to `characters` in `src/assets.js`
+(and a Japanese name to `JA` near the top of `src/app.js` if you want it translated).
 
-1. Put images in `public/backgrounds/` or `public/sprites/`.
-2. Add an entry for each in `src/assets.js`.
-3. Or skip the files and use the **Upload** buttons in the editor (stored inside the exported `.json`).
+## Troubleshooting
 
-Sprites should be transparent PNGs that all share the same canvas size so they line up.
-
-## Localization
-
-Copy `localization-template-en.json`, translate the values, and paste them into `src/lang.js`.
-
-## Contributing
-
-Issues and pull requests are welcome. Please include a screenshot for visual changes.
+- **Save does nothing or shows an error:** open the page through the local server, not by double-clicking the file.
+- **Sprites or backgrounds do not appear:** see [Updating the list](#updating-the-list).
+- **The dialogue text sits in the wrong place:** use **Experimental > Font Offset** on the Text tab.
+- **A scene saved by an older version looks empty:** press **Clear** and start again.
 
 ## Credits and disclaimer
 
+Made by Kanameke. Still a work in progress.
+
 This is an unofficial fan project and is not affiliated with or endorsed by Disney, Aniplex, or the developers of
-*Disney Twisted-Wonderland*. Characters, artwork, UI graphics, and fonts remain the property of their respective
-owners and are included here only as placeholders; replace them with your own assets before redistributing.
+*Disney Twisted-Wonderland*. Characters, artwork, UI graphics and fonts belong to their respective owners and are
+included only as placeholders. Replace them with your own assets before you redistribute.
 The code is released under the MIT License.
-
-
-## Adding sprites per character
-Every character has a folder: `public/sprites/<name>/` (for example `public/sprites/epel/`, `public/sprites/rielle/`).
-Drop that character's sprites (PNG / WebP / JPG, transparent, same canvas size) in their folder, then run `start.bat` / `start.sh` again
-(or `python3 tools/make-manifest.py`). They appear under the character's name in the Sprites picker.
-Need a character that isn't listed? Create a new folder with their name inside `public/sprites/`.
-
-## Adding backgrounds
-Drop images (JPG / PNG / WebP, 16:9 or 2:1 works best) into `public/backgrounds/` (you can use sub-folders to stay organised),
-then run `start.bat` / `start.sh` again (or `python3 tools/make-manifest.py`). They appear in the Background gallery.
