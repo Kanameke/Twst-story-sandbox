@@ -1,0 +1,9 @@
+{
+  "name": "twst-story-maker",
+  "version": "1.0.0",
+  "description": "Twisted Wonderland style story maker and simulator",
+  "scripts": {
+    "start": "python3 -m http.server 8080"
+  },
+  "license": "MIT"
+}

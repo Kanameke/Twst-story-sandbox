@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TWST Dialogue Sandbox</title>
+<link rel="stylesheet" href="src/styles.css">
+</head>
+<body>
+<div id="pageBg"></div>
+<div id="lang"><select id="langSel" aria-label="Language"><option value="en">English</option><option value="ja">日本語</option></select></div>
+
+<div id="stageWrap">
+  <div id="stage">
+    <img id="bg" alt="">
+    <div id="layers"></div>
+    <img id="ui" src="public/ui/dialogue_ui.png" alt="">
+    <img id="uiBack" src="public/ui/dialogue_ui.png" alt="">
+    <div id="dlg"><div id="name"></div><span id="txt"></span></div>
+  </div>
+  <div id="notice">Mind the spoilers when posting!</div>
+</div>
+
+<div id="ctrl">
+  <div id="acts"><button id="save" class="g" data-i18n="save">Save</button><button id="clear" class="w" data-i18n="clear">Clear</button></div>
+  <nav id="tabs">
+    <button class="on" data-tab="pBg" title="Background"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="1.6"/><path d="M4 18l5-5 3 3 3-4 5 6"/></svg></button>
+    <button data-tab="pText" title="Text"><svg viewBox="0 0 24 24"><path d="M4 5h16v11H11l-5 4v-4H4z"/></svg></button>
+    <button data-tab="pSpr" title="Sprites"><svg viewBox="0 0 24 24" class="fill"><circle cx="12" cy="7.5" r="4"/><path d="M4 21c0-5 3.5-7 8-7s8 2 8 7z"/></svg></button>
+  </nav>
+  <button id="toggle" class="w" title="Hide / show panel">›</button>
+</div>
+
+<aside id="side">
+  <section class="pane on" id="pBg">
+    <h2 data-i18n="background">Background</h2>
+    <div id="bgThumb"><img id="bgPrev" alt=""></div>
+    <button class="w up" data-up="bg"><svg viewBox="0 0 24 24"><path d="M12 16V4M7 9l5-5 5 5M4 20h16"/></svg><span data-i18n="background">Background</span></button>
+    <button class="sel" id="fBg" type="button"></button>
+  </section>
+
+  <section class="pane" id="pText">
+    <h2 data-i18n="text">Text</h2>
+    <textarea id="fText"></textarea>
+    <div data-sl="fs"></div>
+    <label class="chk"><input type="checkbox" id="hText"><i></i><span data-i18n="hidden">Hidden</span></label>
+    <h2 data-i18n="nametag">Name Tag</h2>
+    <div class="inp"><input type="text" id="fName"><svg viewBox="0 0 24 24"><path d="M4 20l1-4L16 5l3 3L8 19z"/></svg></div>
+    <button class="sel" id="fChar" type="button"></button>
+    <label class="chk"><input type="checkbox" id="hName"><i></i><span data-i18n="hidden">Hidden</span></label>
+    <h2 data-i18n="experimental">Experimental</h2>
+    <div data-sl="off"></div>
+    <p class="note" data-i18n="note">If the text in the canvas does not line up correctly, adjustments may be necessary.</p>
+  </section>
+
+  <section class="pane" id="pSpr">
+    <div class="hrow"><h2 data-i18n="sprites">Sprites</h2>
+      <button class="ic" id="lAdd" title="Add layer"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v10M7 12h10"/></svg></button>
+      <button class="ic" id="lDel" title="Delete layer"><svg viewBox="0 0 24 24"><path d="M5 7h14M9 7V4h6v3M7 7l1 13h8l1-13"/></svg></button>
+      <button class="ic sq" id="lUp" title="Move up"><svg viewBox="0 0 24 24" class="fill"><path d="M5 16l7-8 7 8z"/></svg></button>
+      <button class="ic sq" id="lDn" title="Move down"><svg viewBox="0 0 24 24" class="fill"><path d="M5 8l7 8 7-8z"/></svg></button>
+    </div>
+    <select id="fLayer"></select>
+    <button class="w up" data-up="sp"><svg viewBox="0 0 24 24"><path d="M12 16V4M7 9l5-5 5 5M4 20h16"/></svg><span data-i18n="sprites">Sprites</span></button>
+    <h2 data-i18n="sprite">Sprite</h2>
+    <button class="sel" id="fSprite" type="button"></button>
+    <h2 data-i18n="options">Options</h2>
+    <div data-sl="x"></div><div data-sl="y"></div><div data-sl="sc"></div>
+    <label class="chk"><input type="checkbox" id="hSpr"><i></i><span data-i18n="hidden">Hidden</span></label>
+    <label class="chk"><input type="checkbox" id="fFlip"><i></i><span data-i18n="flip">Flip</span></label>
+  </section>
+  <input type="file" id="upF" accept="image/*" hidden>
+  <footer id="credit">
+    <img class="epel" src="public/ui/epel-h.webp" alt="Epel">
+    <p class="wip" data-i18n="wip">Still in progress! You can add sprites and backgrounds on your own too.</p>
+    <p class="by">made by Kanameke</p>
+    <p class="fact" data-i18n="fact">I can't add more 2D live sprites due to space, so you can add them yourself!</p>
+    <p class="links"><a href="https://drive.google.com/drive/u/0/mobile/folders/1QI6Kv8Bs6996wtxI7tYwLk3nmAuh_pGL/1iFTUy5NYbg3W_el8V9MhnRyAHUkhhP9X?usp=drive_link&amp;sort=13&amp;direction=a" target="_blank" rel="noopener" data-i18n="f1">Sprites folder 1</a><a href="https://drive.google.com/drive/u/0/mobile/folders/172KbO11mzIQQyAVHP-3o1dujYQF9Qb_F?usp=sharing" target="_blank" rel="noopener" data-i18n="f2">Sprites folder 2</a></p>
+  </footer>
+</aside>
+
+<div id="modal" hidden><div id="mBox"></div></div>
+
+<script src="src/assets.js"></script>
+<script src="src/sprites-manifest.js?v=1794829763"></script>
+<script src="src/app.js"></script>
+</body>
+</html>
