@@ -1,7 +1,7 @@
 <h1 align="center">Twisted Wonderland Dialogue Sandbox</h1>
 
 <p align="center">
-  A little sandbox for building Twisted Wonderland-style dialogue boxes.<br>
+  A little sandbox for building Twisted Wonderland dialogue boxes of your own! (because idk why I made this anyway haha pls don't sue me).<br>
   Pick a background, place sprites, type a line, and save it as a PNG. English and 日本語.
 </p>
 
@@ -172,9 +172,9 @@ Want a new character name in the list? Add it to `characters` in `src/assets.js`
 
 ## Credits and disclaimer
 
-Made by Kanameke. Still a work in progress.
+Made by Kanameke (AKA THE ONE WHO MADE THAT PROFILE MAKER NICE TO MEET YAAAA). Still a work in progress.
 
-This is an unofficial fan project and is not affiliated with or endorsed by Disney, Aniplex, or the developers of
+This is an unofficial fan project and is not affiliated with or endorsed by Disney, Aniplex, F4samurai, or the developers of
 *Disney Twisted-Wonderland*. Characters, artwork, UI graphics and fonts belong to their respective owners and are
 included only as placeholders. Replace them with your own assets before you redistribute.
 The code is released under the MIT License.
