@@ -12,8 +12,8 @@ S=S&&S.layers?S:DEF();S.lang=S.lang||"en";S.layers.forEach(l=>{l.src=(l.src||"")
 const JA={Riddle:"リドル",Trey:"トレイ",Cater:"ケイト",Ace:"エース",Deuce:"デュース",Leona:"レオナ",Ruggie:"ラギー",Jack:"ジャック",Azul:"アズール",Jade:"ジェイド",Floyd:"フロイド",Kalim:"カリム",Jamil:"ジャミル",Vil:"ヴィル",Epel:"エペル",Rook:"ルーク",Idia:"イデア",Ortho:"オルト",Malleus:"マレウス",Lilia:"リリア",Silver:"シルバー",Sebek:"セベク",Yuu:"ユウ",Grim:"グリム",Crowley:"クロウリー",Crewel:"クルーウェル",Trein:"トレイン",Vargas:"バルガス",Sam:"サム","???":"？？？",Narrator:"ナレーター"};
 const GJA={"Royal Sword Academy":"ロイヤルソードアカデミー",Heartslabyul:"ハーツラビュル寮",Savanaclaw:"サバナクロー寮",Octavinelle:"オクタヴィネル寮",Scarabia:"スカラビア寮",Pomefiore:"ポムフィオーレ寮",Ignihyde:"イグニハイド寮",Diasomnia:"ディアソムニア寮",Others:"その他"};
 const UI={
-en:{save:"Save",clear:"Clear",background:"Background",text:"Text",nametag:"Name Tag",experimental:"Experimental",sprites:"Sprites",sprite:"Sprite",options:"Options",hidden:"Hidden",flip:"Flip",note:"If the text in the canvas does not line up correctly, adjustments may be necessary.",wip:"Still in progress! You can add sprites and backgrounds on your own too.",fact:"I can't add more 2D live sprites due to space, so you can add them yourself!",f1:"Sprites folder 1",f2:"Sprites folder 2",char:"Character…",none:"— none —",layer:"Layer",empty:"Empty",custom:"(custom)",fs:"Text Font Size",off:"Font Offset",x:"X-Offset",y:"Y-Offset",sc:"Scale",add:"+ Add entry",addname:"+ Add name",mychars:"My characters",myup:"My uploads",nosp:"No sprites were found. Put sprites in public/sprites/<character>/, then update src/sprites-manifest.js (run tools/make-manifest.py, or push to GitHub and let the Action do it) and redeploy.",nobg:"No backgrounds were found. Put images in public/backgrounds/, then update src/sprites-manifest.js and redeploy.",namefor:"Name for this entry:",chname:"Character name:",del:"Remove this entry?"},
-ja:{save:"保存",clear:"クリア",background:"背景",text:"テキスト",nametag:"名前タグ",experimental:"実験的",sprites:"スプライト",sprite:"スプライト",options:"オプション",hidden:"非表示",flip:"反転",note:"キャンバス内のテキスト位置がずれる場合は、調整が必要になることがあります。",wip:"制作中です！スプライトや背景は自分で追加することもできます。",fact:"容量の都合で2D Liveスプライトはこれ以上追加できないので、自分で追加してください！",f1:"スプライトフォルダ 1",f2:"スプライトフォルダ 2",char:"キャラクター…",none:"— なし —",layer:"レイヤー",empty:"空",custom:"(カスタム)",fs:"文字サイズ",off:"文字オフセット",x:"X位置",y:"Y位置",sc:"拡大率",add:"+ エントリーを追加",addname:"+ 名前を追加",mychars:"マイキャラクター",myup:"アップロード",nosp:"スプライトが見つかりません。public/sprites/<キャラ名>/ に画像を入れ、src/sprites-manifest.js を更新（tools/make-manifest.py を実行、または GitHub の Action）してから再デプロイしてください。",nobg:"背景が見つかりません。public/backgrounds/ に画像を入れ、src/sprites-manifest.js を更新して再デプロイしてください。",namefor:"このエントリーの名前:",chname:"キャラクター名:",del:"このエントリーを削除しますか？"}};
+en:{save:"Save",clear:"Clear",background:"Background",text:"Text",nametag:"Name Tag",experimental:"Experimental",sprites:"Sprites",sprite:"Sprite",options:"Options",hidden:"Hidden",flip:"Flip",note:"If the text in the canvas does not line up correctly, adjustments may be necessary.",wip:"Still in progress! You can add sprites and backgrounds on your own too.",fact:"I can't add more 2D live sprites due to space, so you can add them yourself!",f1:"Sprites folder 1",f2:"Sprites folder 2",char:"Character…",none:"— none —",layer:"Layer",empty:"Empty",custom:"(custom)",fs:"Text Font Size",off:"Font Offset",x:"X-Offset",y:"Y-Offset",sc:"Scale",add:"+ Add entry",addname:"+ Add name",mychars:"My characters",myup:"My uploads",nosp:"No sprites yet. Upload images into public/sprites/<character>/ on GitHub, wait about a minute for the site to update, then press ↻.",nobg:"No backgrounds yet. Upload images into public/backgrounds/ on GitHub, wait about a minute for the site to update, then press ↻.",namefor:"Name for this entry:",chname:"Character name:",del:"Remove this entry?"},
+ja:{save:"保存",clear:"クリア",background:"背景",text:"テキスト",nametag:"名前タグ",experimental:"実験的",sprites:"スプライト",sprite:"スプライト",options:"オプション",hidden:"非表示",flip:"反転",note:"キャンバス内のテキスト位置がずれる場合は、調整が必要になることがあります。",wip:"制作中です！スプライトや背景は自分で追加することもできます。",fact:"容量の都合で2D Liveスプライトはこれ以上追加できないので、自分で追加してください！",f1:"スプライトフォルダ 1",f2:"スプライトフォルダ 2",char:"キャラクター…",none:"— なし —",layer:"レイヤー",empty:"空",custom:"(カスタム)",fs:"文字サイズ",off:"文字オフセット",x:"X位置",y:"Y位置",sc:"拡大率",add:"+ エントリーを追加",addname:"+ 名前を追加",mychars:"マイキャラクター",myup:"アップロード",nosp:"スプライトがありません。GitHub の public/sprites/<キャラ名>/ に画像をアップロードし、1分ほど待ってから ↻ を押してください。",nobg:"背景がありません。GitHub の public/backgrounds/ に画像をアップロードし、1分ほど待ってから ↻ を押してください。",namefor:"このエントリーの名前:",chname:"キャラクター名:",del:"このエントリーを削除しますか？"}};
 const T=k=>(UI[S.lang]||UI.en)[k];
 const nm=n=>S.lang==="ja"?(JA[n]||n):n;
 const toLang=(n,l)=>{const en=Object.keys(JA).find(k=>k===n||JA[k]===n);return en?(l==="ja"?JA[en]:en):n};
@@ -94,6 +94,45 @@ $("#upF").onchange=e=>{const f=e.target.files[0];if(!f)return;const r=new FileRe
   if(type==="bg")S.bg=ent.src;else cl().src=ent.src;
   $("#modal").hidden=true;upd()};r.readAsDataURL(f)};
 
+
+// ---------- Live file list from your GitHub repo (no scripts needed) ----------
+const IMG_RE=/\.(png|webp|jpe?g|gif)$/i;
+const nice=s=>{const l=s.replace(/\.[^./]+$/,"").replace(/[_-]+/g," ").trim();return l.charAt(0).toUpperCase()+l.slice(1)};
+const IS_LOCAL=/^(localhost|127\.|0\.0\.0\.0|\[::1\])/.test(location.hostname)||location.protocol==="file:";
+function applyTree(paths){
+  const set=new Set(paths);
+  paths.forEach(p=>{
+    const parts=p.split("/"),file=parts[parts.length-1];
+    if(parts[0]!=="public"||file.startsWith("_")||file.startsWith("."))return;
+    if(parts[1]==="sprites"&&!lib.sp.some(a=>a.src===p))
+      lib.sp.push({char:parts.length>=4?parts[2]:"other",label:nice(file),src:p});
+    if(parts[1]==="backgrounds"&&parts.length>=3&&!lib.bg.some(a=>a.src===p))
+      lib.bg.push({label:nice(parts.slice(2).join(" / ")),src:p});
+  });
+  if(!IS_LOCAL){ // drop list entries whose file no longer exists in the repo
+    lib.bg=lib.bg.filter(a=>a.custom||set.has(a.src));lib.sp=lib.sp.filter(a=>a.custom||set.has(a.src));
+    if(S.bg&&!S.bg.startsWith("data:")&&!set.has(S.bg))S.bg=lib.bg[0]?.src||"";
+    S.layers.forEach(l=>{if(l.src&&!l.src.startsWith("data:")&&!set.has(l.src))l.src=""});
+  }
+  lib.bg.sort((a,b)=>a.label.localeCompare(b.label));
+  lib.sp.sort((a,b)=>(a.src>b.src?1:-1));
+  if(!S.bg&&lib.bg.length)S.bg=lib.bg[0].src;
+}
+async function loadRepoFiles(force){
+  const R=window.TWST_REPO;if(!R)return false;
+  const key="twst-tree-v1";let paths=null,cached=null;
+  try{cached=JSON.parse(localStorage.getItem(key))}catch(e){}
+  if(!force&&cached&&Date.now()-cached.t<120000)paths=cached.p;
+  if(!paths){
+    try{const r=await fetch(`https://api.github.com/repos/${R.owner}/${R.repo}/git/trees/${R.branch}?recursive=1`);
+      if(r.ok){const j=await r.json();paths=j.tree.filter(x=>x.type==="blob"&&x.path.startsWith("public/")&&IMG_RE.test(x.path)).map(x=>x.path);
+        try{localStorage.setItem(key,JSON.stringify({t:Date.now(),p:paths}))}catch(e){}}}catch(e){}
+  }
+  if(!paths&&cached)paths=cached.p;
+  if(!paths)return false;
+  applyTree(paths);upd();return true;
+}
+
 // ---------- Pickers (list for sprites / names, gallery for backgrounds) ----------
 function delEntry(type,src){
   if(!confirm(T("del")))return;
@@ -104,7 +143,7 @@ function openPicker(type){
   const m=$("#modal"),box=$("#mBox");m.hidden=false;m.className=type;
   const close=()=>{m.hidden=true};
   m.onclick=e=>{if(e.target===m)close()};
-  const bar=(addTxt,addFn)=>`<div class="mbar"><button class="mx" data-x>×</button><button class="madd" data-add>${addTxt}</button></div>`;
+  const bar=(addTxt,addFn)=>`<div class="mbar"><button class="mx" data-x>×</button><button class="madd" data-add>${addTxt}</button><button class="mx" data-refresh title="Refresh">↻</button></div>`;
   let h="";
   if(type==="bg"){
     h=bar(T("add"))+(lib.bg.some(a=>!a.custom)?"":`<div class="mhint">${T("nobg")}</div>`)+lib.bg.map((a,i)=>`<div class="card${a.src===S.bg?" on":""}" data-i="${i}"><img src="${esc(a.src)}" alt=""><div class="cap"><span>${a.label}</span>${a.custom?`<button class="mdel" data-del="${i}">✕</button>`:""}</div></div>`).join("");
@@ -123,6 +162,7 @@ function openPicker(type){
   box.innerHTML=h;
   box.onclick=e=>{
     if(e.target.closest("[data-x]"))return close();
+    if(e.target.closest("[data-refresh]")){loadRepoFiles(true).then(()=>openPicker(type));return}
     if(e.target.closest("[data-add]")){
       if(type==="char"){const n=(prompt(T("chname"))||"").trim();if(n){CUS.chars.push(n);saveCus();S.name=n;upd();openPicker("char")}}
       else{upT=type==="bg"?"bg":"sp";$("#upF").value="";$("#upF").click()}
@@ -143,7 +183,7 @@ document.addEventListener("keydown",e=>{if(e.key==="Escape")$("#modal").hidden=t
 async function savePNG(){
   const W=2560,H=1280,u=W/100,c=document.createElement("canvas");c.width=W;c.height=H;const g=c.getContext("2d");
   const load=src=>new Promise((res,rej)=>{const i=new Image();i.onload=()=>res(i);i.onerror=()=>rej(new Error("load "+src.slice(0,40)));i.src=src});
-  try{await Promise.all([document.fonts.load("40px TsukuAB"),document.fonts.load("40px TsukuAJ"),document.fonts.load("40px Boucherie")])}catch(e){}
+  try{await Promise.all([document.fonts.load("40px TsukuAB"),document.fonts.load("40px TsukuA"),document.fonts.load("40px Boucherie"),document.fonts.load("40px TsukuAJ",(S.text||"")+(S.name||""))])}catch(e){}
   if(S.bg){const im=await load(S.bg),r=Math.max(W/im.width,H/im.height),w=im.width*r,h=im.height*r;g.drawImage(im,(W-w)/2,(H-h)/2,w,h)}
   for(const l of S.layers){if(!l.src||l.hide)continue;
     const im=await load(l.src),h=(165+l.sc)/100*H,w=h*im.width/im.height,cx=W/2+l.x*2,y=.08*H+l.y*2;
@@ -155,8 +195,8 @@ async function savePNG(){
   if(S.name&&!S.hideName){let s=2.45;g.font=`${s*u}px Boucherie, TsukuAJ, TsukuAB, serif`;
     while(g.measureText(S.name).width>18.5*u&&s>1.2){s-=.1;g.font=`${s*u}px Boucherie, TsukuAJ, TsukuAB, serif`}
     g.fillStyle="#f1ede6";g.textAlign="center";g.fillText(S.name,(16.1+19.4/2)*u,(32.6+2.2)*u+u*.15)}
-  if(!S.hideText){const s=S.fs/12.8,lh=s*1.24,maxW=58*u;g.font=`${s*u}px ${S.lang==="ja"?"TsukuAJ, TsukuAB":"TsukuAB"}, sans-serif`;const lines=[];
-    for(const para of (S.text||"").split("\n")){let cur="";for(const w of (S.lang==="ja"?Array.from(para):para.split(/(\s+)/))){const t=cur+w;if(g.measureText(t).width>maxW&&cur.trim()){lines.push(cur.trimEnd());cur=w.trimStart()}else cur=t}lines.push(cur)}
+  if(!S.hideText){const s=S.fs/12.8,lh=s*1.24,maxW=58*u;g.font=`${s*u}px ${S.lang==="ja"?"TsukuA, TsukuAJ":"TsukuAB, TsukuAJ"}, sans-serif`;const lines=[];
+    for(const para of (S.text||"").split("\n")){let cur="";for(const w of (S.lang==="ja"?(para.match(/[A-Za-z0-9'’]+|[\s\S]/gu)||[]):para.split(/(\s+)/))){const t=cur+w;if(g.measureText(t).width>maxW&&cur.trim()){lines.push(cur.trimEnd());cur=w.trimStart()}else cur=t}lines.push(cur)}
     g.fillStyle="#5b5650";g.textAlign="left";
     lines.forEach((t,i)=>g.fillText(t,21.3*u,(38.2+S.off/12.8+lh/2+i*lh)*u))}
   c.toBlob(b=>{if(!b)return;const a=document.createElement("a");a.href=URL.createObjectURL(b);a.download="dialogue.png";a.click()},"image/png");
@@ -165,3 +205,4 @@ $("#save").onclick=async()=>{try{await savePNG();const n=$("#notice");n.classLis
   catch(e){alert("Couldn't save the PNG: "+e.message+"\n\nRun start.bat (Windows) or start.sh (Mac/Linux) and open http://localhost:8080 — browsers block saving when the page is opened as a file.")}};
 upd();
 document.fonts.ready.then(render);document.fonts.addEventListener&&document.fonts.addEventListener("loadingdone",render);
+loadRepoFiles();
